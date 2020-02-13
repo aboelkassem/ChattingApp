@@ -4,6 +4,7 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
+       
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
@@ -13,6 +14,7 @@
             "program": "${workspaceFolder}/DatingApp.API/bin/Debug/netcoreapp3.1/DatingApp.API.dll",
             "args": [],
             "cwd": "${workspaceFolder}/DatingApp.API",
+            "externalConsole": true,
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
@@ -30,7 +32,8 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
-            "processId": "${command:pickProcess}"
+            "processId": "${command:pickProcess}",
+            "justMyCode": false
         }
     ]
 }
