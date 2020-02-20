@@ -3,7 +3,7 @@ import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
@@ -33,40 +33,6 @@ export class MemberDetailComponent implements OnInit {
       }
     ];
     this.galleryImages = this.getImages();
-    // this.galleryImages = [
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/39.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/39.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/39.jpg'
-    //   },
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/3.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/3.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/3.jpg'
-    //   },
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/9.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/9.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/9.jpg'
-    //   },
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/19.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/19.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/19.jpg'
-    //   },
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/69.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/69.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/69.jpg'
-    //   },
-    //   {
-    //     small: 'https://randomuser.me/api/portraits/men/89.jpg',
-    //     medium: 'https://randomuser.me/api/portraits/men/89.jpg',
-    //     big: 'https://randomuser.me/api/portraits/men/89.jpg'
-    //   }
-    // ];
-    console.log(this.galleryImages);
-    console.log(this.galleryOptions);
   }
 
   getImages() {
