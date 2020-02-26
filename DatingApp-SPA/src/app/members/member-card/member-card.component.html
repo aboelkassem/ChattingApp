@@ -1,10 +1,10 @@
 <div class="card mb-4">
   <div class="card-img-wrapper">
-    <img src="{{user.photoUrl}}" alt="{{user.knownAs}}" class="card-img-top">
+    <img src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.knownAs}}" class="card-img-top">
     <ul class="list-inline member-icons animate text-center">
-      <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/members/',user.id]" ><i class="fa fa-user"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-heart"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-envelope"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/members/',user.id]" title="Profile"><i class="fa fa-user"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/members/',user.id]" [queryParams]="{tab:3}" title="Message"><i class="fa fa-envelope"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-primary" (click)="sendLike(user.id)" title="Follow"><i class="fas fa-user-plus"></i></button></li>
     </ul>
   </div>
   <div class="card-body p-1">

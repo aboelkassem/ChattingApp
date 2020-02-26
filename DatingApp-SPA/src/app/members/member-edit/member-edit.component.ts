@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
+  photoUrl: string;
   @ViewChild('editForm') editForm: NgForm;  // #editForm ="ngForm"
   @HostListener('window:beforeunload', ['$event'])    // hostListener will show confirm message if you had edit in your form/ if dirty and you want to close tap(window) and it's still dirty
   unloadNotification($event: any) {
@@ -27,6 +28,8 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['profileUser'];
     });
+
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {
@@ -38,4 +41,8 @@ export class MemberEditComponent implements OnInit {
       console.log(error);
     });
   }
+
+  // updateMainPhoto(photoUrl) {
+  //   this.user.photoUrl = photoUrl;
+  // }
 }

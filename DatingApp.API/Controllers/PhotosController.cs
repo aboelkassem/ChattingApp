@@ -97,5 +97,73 @@ namespace DatingApp.API.Controllers
             
             return BadRequest("Could not add the photo");
         }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMainPhoto(int userId, int id)
+        {
+            // check if the user is the user that past the token up to our server ==> if the id is the same id(from the token) that loggedIn
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+            
+            // check if the photo is belong to logged user
+            if (!user.Photos.Any(p =>p.Id == id))
+                return Unauthorized();
+            
+            var photoFromRepo = await _repo.GetPhoto(id);
+
+            if(photoFromRepo.IsMain)
+                return BadRequest("This is already the main photo");
+            
+            var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
+            currentMainPhoto.IsMain = false;
+
+            photoFromRepo.IsMain = true;
+
+            if(await _repo.SaveAll())
+                return NoContent();
+            
+            return BadRequest("Could not set photo to main photo");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            // check if the user is the user that past the token up to our server ==> if the id is the same id(from the token) that loggedIn
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(userId);
+            
+            // check if the photo is belong to logged user
+            if (!user.Photos.Any(p =>p.Id == id))
+                return Unauthorized();
+            
+            var photoFromRepo = await _repo.GetPhoto(id);
+
+            if(photoFromRepo.IsMain)
+                return BadRequest("You cannot delete your main photo");
+
+            if (photoFromRepo.PublicId != null)
+            {
+                var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+                
+                // Delete From third part cloudinary, if result is "ok" mean delete successfully
+                var result = _cloudinary.Destroy(deleteParams);
+
+                if (result.Result == "ok") 
+                    _repo.Delete(photoFromRepo);
+            }
+            
+            // if (photoFromRepo.PublicId == null)
+            _repo.Delete(photoFromRepo);
+
+            
+            if ( await _repo.SaveAll())
+                return Ok();
+            
+            return BadRequest("Failed to Delete the photo");
+        }
     }
 }

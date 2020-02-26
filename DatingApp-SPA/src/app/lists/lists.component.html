@@ -1,3 +1,31 @@
-<p>
-  lists works!
-</p>
+<div class="text-center mt-3">
+  <h2>{{likesParam === 'Likers' ? 'Members who Follow me' : 'Members who I\'ve Followed'}} : {{pagination.totalItems}}</h2>
+</div>
+
+<div class="container mt-3">
+
+<div class="row d-flex justify-content-center">
+  <div class="btn-group">
+    <button class="btn btn-outline-primary mr-2" [(ngModel)]="likesParam" btnRadio="Likers" (click)="loadUsers()"><i class="fas fa-users"></i> Followers</button>
+    <button class="btn btn-outline-primary" [(ngModel)]="likesParam" btnRadio="Likees" (click)="loadUsers()"><i class="fas fa-user-friends"></i> Following</button>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div *ngFor="let user of users" class="col-sm-6 col-md-4 col-lg-4 col-xl-2">
+    <app-member-card [user]="user"></app-member-card>
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="d-flex justify-content-center">
+<pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+  (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+
+</pagination>
+</div>

@@ -11,3 +11,7 @@ img.img-thumbnail {
 input[type=file] {
     color: transparent;
 }
+
+.my-drop-zone {
+    background-color: #e1e4e8;
+}
