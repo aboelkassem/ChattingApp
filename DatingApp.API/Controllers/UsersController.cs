@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers {
-    [Authorize]
+    // [Authorize]  // because it's become globally now
     [Route ("api/[controller]")]
     [ApiController]
     [ServiceFilter(typeof(LogUserActivity))]    // any method in this controller will happen/execute will fire this Action Filter that update lastActive Property of user

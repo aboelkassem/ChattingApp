@@ -3,7 +3,7 @@ import { NgModule, Pipe } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { BsDropdownModule , TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule , TabsModule, ModalModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
@@ -31,7 +31,12 @@ import { MessagesResolver } from './_resolves/messages.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { HasRoleDirective } from './_directives/hasRole.directive';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 
 
 export function tokenGetter() {
@@ -60,7 +65,12 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
       MemberEditComponent,
       PhotoEditorComponent,
       MemberMessagesComponent,
-      TimeAgoExtendsPipe
+      AdminPanelComponent,
+      UserManagementComponent,
+      PhotoManagementComponent,
+      TimeAgoExtendsPipe,
+      HasRoleDirective,
+      RolesModalComponent
    ],
    imports: [
       BrowserModule,
@@ -74,6 +84,7 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
       BsDatepickerModule.forRoot(),
+      ModalModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       JwtModule.forRoot({
@@ -92,6 +103,9 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
       MessagesResolver,
       ListResolver,
       PreventUnsavedChanges
+   ],
+   entryComponents: [
+      RolesModalComponent
    ],
    bootstrap: [
       AppComponent
