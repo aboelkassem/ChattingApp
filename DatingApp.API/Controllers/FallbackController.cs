@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingApp.API.Controllers
 {
     [AllowAnonymous]
-    public class Fallback : Controller
+    public class FallbackController : Controller
     {
         public IActionResult Index()
         {

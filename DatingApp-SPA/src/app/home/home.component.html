@@ -4,7 +4,7 @@
     <p class="lead">Come on in to view your matches.... All you need to do is sign up!</p>
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()" *ngIf="!loggedIn()">Register</button>
-      <button class="btn btn-info btn-lg">Learn More</button>
+      <a href="https://github.com/aboelkassem/ChattingApp" class="btn btn-info btn-lg">Learn More</a>
     </div>
   </div>
   <div *ngIf="registerMode && !loggedIn()" class="container">

@@ -4,7 +4,7 @@ import { AuthService } from '../_services/auth.service';
 @Directive({
   selector: '[appHasRole]'
 })
-export class HasRoleDirective implements OnInit{
+export class HasRoleDirective implements OnInit {
   @Input() appHasRole: string[];
   isVisible = false;
 
@@ -18,7 +18,7 @@ export class HasRoleDirective implements OnInit{
     }
 
     // if user has role then render/display the element
-    if(this.authService.roleMatch(this.appHasRole)) {
+    if (this.authService.roleMatch(this.appHasRole)) {
       if (!this.isVisible) {
         this.isVisible = true;
         this.viewContainerRef.createEmbeddedView(this.templateRef);
