@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,10 @@ export class HomeComponent implements OnInit {
   registerMode = false;
   values: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Home - ChattingApp');
   }
 
   registerToggle() {

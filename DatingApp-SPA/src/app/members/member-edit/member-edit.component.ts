@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-member-edit',
@@ -22,9 +23,11 @@ export class MemberEditComponent implements OnInit {
     }
   }
 
-  constructor(private route: ActivatedRoute, private alertify: AlertifyService, private userService: UserService, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private alertify: AlertifyService,
+              private userService: UserService, private authService: AuthService, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Edit My Profile');
     this.route.data.subscribe(data => {
       this.user = data['profileUser'];
     });

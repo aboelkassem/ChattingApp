@@ -5,6 +5,7 @@ import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-messages',
@@ -16,9 +17,12 @@ export class MessagesComponent implements OnInit {
   pagination: Pagination;
   messageContainer = 'Unread';
 
-  constructor(private userService: UserService, private authService: AuthService, private route: ActivatedRoute, private alertify: AlertifyService) { }
+  constructor(private userService: UserService, private authService: AuthService,
+      private route: ActivatedRoute, private alertify: AlertifyService, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Messages - ChattingApp');
+
     this.route.data.subscribe(data => {
       this.messages = data['messages'].result;
       this.pagination = data['messages'].pagination;

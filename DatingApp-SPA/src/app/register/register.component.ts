@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { User } from '../_models/user';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +19,12 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService,
+              private fb: FormBuilder, private router: Router, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Register - ChattingApp');
+
     this.createRegisterForm();
     this.bsConfig = {
       containerClass: 'theme-red'

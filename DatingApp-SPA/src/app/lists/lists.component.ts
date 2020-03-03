@@ -5,6 +5,7 @@ import { AuthService } from '../_services/auth.service';
 import { UserService } from '../_services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lists',
@@ -19,9 +20,12 @@ export class ListsComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
               private route: ActivatedRoute,
-              private alertify: AlertifyService) { }
+              private alertify: AlertifyService,
+              private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Followers - ChattingApp');
+
     this.route.data.subscribe(data => {
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;

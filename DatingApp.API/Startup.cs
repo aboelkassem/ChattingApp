@@ -42,6 +42,7 @@ namespace DatingApp.API
                 options.UseLazyLoadingProxies();
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
+            
             ConfigureServices(services);
         }
 

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { AuthService } from 'src/app/_services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-member-detail',
@@ -18,12 +19,14 @@ export class MemberDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   @ViewChild('memberTabs', {static: true}) memberTabs: TabsetComponent;
 
-  constructor(private authService: AuthService, private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, private userService: UserService,
+              private alertify: AlertifyService, private route: ActivatedRoute, private title: Title) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    this.title.setTitle(this.user.knownAs + ' - ChattingApp');
 
     this.route.queryParams.subscribe(params => {
       const selectedTab = params['tab'];
