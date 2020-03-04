@@ -1,6 +1,6 @@
 # ChattingApp
 this project is a real world messaging system build using asp.net core 3.1 api &amp; angular 9 &amp; EntityFramework core &amp; sqllite,
-i hade build it for training in much topics and covering it as well like secuirty in server side and client side, error handling in server/client side
+i had build it for training/testing angular in much topics and covering it as well like secuirty in server side and client side, error handling in server/client side
 and see alot of features in angular framework, also have some functionalities like members can follow/message each other, 
 edit his profile in pretty view of SPA ..
 
