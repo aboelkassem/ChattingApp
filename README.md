@@ -22,6 +22,6 @@ edit his profile in pretty view of SPA ..
  # Demo
   - for demo you can register as new member or using the existing members username and have the same password = "password"
   - try register for new user
-  - try demo user => username = demo , password = demo
+  - try demo user => username = demo , password = demo or username = admin, password = 12345
   
   - site ==> https://chatting-apps.herokuapp.com
