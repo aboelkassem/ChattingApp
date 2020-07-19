@@ -20,8 +20,10 @@ edit his profile in pretty view of SPA ..
  
  
  # Demo
-  - for demo you can register as new member or using the existing members username and have the same password = "password"
+  - for demo you can register as new member or using the existing members username and have the same password = "password" like 
+   ==> username = "eliza", password="password",
+   ==> username = "Fowler", password="password" ..... etc
   - try register for new user
   - try demo user => username = demo , password = demo
   
-  - site ==> https://chatting-apps.herokuapp.com
+  - site ==> https://chatting-apps.herokuapp.com or http://chattingapp.somee.com
