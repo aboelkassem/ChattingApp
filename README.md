@@ -8,7 +8,7 @@ edit his profile in pretty view of SPA ..
 # Features
   - Single Page Application
   - Interactive between backend api and frontend in synchronous way
-  - Build using asp.netcore api 3.1, angular 9, entityframework core, mssql, api testing using postman and sqllite
+  - Build using asp.netcore api 3.1, angular 9, entityframework core, api testing using postman and sqllite
   - Using source control git and docker container image for publish in heroku
   - Members can messaging/following each other in secure way
   - Pagination, Filters, Sorting in server/client side
